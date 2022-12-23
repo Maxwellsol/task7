@@ -4,9 +4,11 @@ class Airport
 {
     private array $planes;
     private string $name;
+    private static $airports = array();
 
     public function __construct($name, $planes = [])
     {
+        Airport::$airports[] = $this;
         $this->name = $name;
         if(!empty($planes)) {
             foreach ($planes as $plane) {
@@ -32,22 +34,22 @@ class Airport
 
     public function onParking($plane)
     {
-        $plane->setStatus('on parking');
+        $plane->goToParking;
     }
 
     public function readyToFly($plane)
     {
-        $plane->setStatus('ready to fly');
+        $plane->readyTofly;
     }
 
     public function  boardingPassangers($plane)
     {
-        $plane->setStatus('boarding passengers');
+        $plane->boardingPassangers();
     }
 
     public function refueling($plane)
     {
-        $plane->setStatus('refueling');
+        $plane->refueling();
     }
 
     public function getPlanes(): array
@@ -62,6 +64,9 @@ class Airport
     public function getName(): string
     {
         return $this->name;
+    }
+    public static function getAllAirports(){
+        return self::$airports;
     }
 
 }
