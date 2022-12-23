@@ -10,11 +10,11 @@ class Airport
     {
         Airport::$airports[] = $this;
         $this->name = $name;
-        if(!empty($planes)) {
+        if (!empty($planes)) {
             foreach ($planes as $plane) {
                 $this->takePlane($plane);
             }
-        }else{
+        } else {
             $this->planes = [];
         }
 
@@ -34,15 +34,15 @@ class Airport
 
     public function onParking($plane)
     {
-        $plane->goToParking;
+        $plane->goToParking();
     }
 
     public function readyToFly($plane)
     {
-        $plane->readyTofly;
+        $plane->readyTofly();
     }
 
-    public function  boardingPassangers($plane)
+    public function boardingPassangers($plane)
     {
         $plane->boardingPassangers();
     }
@@ -54,19 +54,24 @@ class Airport
 
     public function getPlanes(): array
     {
-            return $this->planes;
+        return $this->planes;
     }
 
     public function setName($name): void
     {
         $this->name = $name;
     }
+
     public function getName(): string
     {
         return $this->name;
     }
-    public static function getAllAirports(){
+
+    public static function getAllAirports()
+    {
         return self::$airports;
     }
 
 }
+
+
