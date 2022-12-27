@@ -43,14 +43,19 @@ abstract class Plane{
         $this->setStatusCode(3);
     }
 
-    public function boardingPassangers()
+    public function readyToFly()
     {
         $this->setStatusCode(4);
     }
 
-    public function refueling()
+    public function boardingPassangers()
     {
         $this->setStatusCode(5);
+    }
+
+    public function refueling()
+    {
+        $this->setStatusCode(6);
     }
 
 
